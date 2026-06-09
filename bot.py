@@ -148,8 +148,13 @@ def _fetch_memory(url: str) -> dict | None:
             data = resp.read()
         log.info(f"Fetched {fmt_mb(len(data))} in {time.monotonic()-t0:.1f}s")
 
-        return {"bytes": data, "size": len(data),
-                "title": info.get("title",""), "duration": info.get("duration",0)}
+        return {
+            "bytes": data,
+            "size": len(data),
+            "title": info.get("title", ""),
+            "duration": info.get("duration", 0),
+            "thumbnail": info.get("thumbnail")
+        }
     except Exception as e:
         log.warning(f"Memory fetch failed: {e}")
         return None
@@ -386,7 +391,7 @@ async def handle_link(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
     await ctx.bot.send_chat_action(update.effective_chat.id, ChatAction.UPLOAD_VIDEO)
     status = await update.message.reply_text("⚡ *Fetching…*", parse_mode=ParseMode.MARKDOWN)
     t0     = time.monotonic()
-    loop   = asyncio.get_event_loop()
+    loop   = asyncio.get_running_loop()
 
     # ── FAST: memory ───────────────────────
     await status.edit_text("🔍 *Extracting…*", parse_mode=ParseMode.MARKDOWN)
