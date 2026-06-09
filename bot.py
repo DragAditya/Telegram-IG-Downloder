@@ -1,7 +1,7 @@
 """
 ╔═══════════════════════════════════════════════════════════════╗
 ║        🚀 DRAGDOWNLOADER BOT  —  v4.0 PRODUCTION             ║
-║  ⚡ Memory fetch → Disk fallback                              ║
+║  ⚡ Memory fetch → Disk fallback                            ║
 ║  🧵 ThreadPoolExecutor (4 workers)                           ║
 ║  🎛️  Inline buttons, live status, rate limiting              ║
 ║  🌐 AUTO: Webhook on Render, Polling on Termux               ║
