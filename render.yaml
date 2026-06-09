@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: dragdownloader-bot
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python bot.py
+    envVars:
+      - key: BOT_TOKEN
+        sync: false          # set manually in Render dashboard
+      - key: WEBHOOK_URL
+        sync: false          # set to: https://YOUR-APP-NAME.onrender.com
+      - key: PORT
+        value: "8443"
+        
