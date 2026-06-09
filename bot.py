@@ -541,5 +541,13 @@ def main():
             allowed_updates=["message", "callback_query"],
         )
 
+import asyncio
+
 if __name__ == "__main__":
-    main()
+    loop = asyncio.new_event_loop()
+    asyncio.set_event_loop(loop)
+
+    try:
+        main()
+    finally:
+        loop.close()
